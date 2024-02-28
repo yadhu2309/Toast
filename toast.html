@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Toast</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src="https://kit.fontawesome.com/d8bdcc8ed9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="button">
+        <button onclick="showToast('Success')">Success</button>
+        <button class="btn" onclick="showToast('Error')">Error</button>
+        <button onclick="showToast('Invalid')">Invalid</button>
+    </div>
+    <div id="toastbox">
+
+    </div>
+    <script>
+        let toastbox = document.getElementById('toastbox')
+        function showToast(message){
+            let toast = document.createElement('div')
+            toast.classList.add('toast')
+            
+            
+            if(message.includes('Error')){
+                toast.classList.add('error')
+                toast.innerHTML = `<i class="fa-solid fa-circle-xmark"></i>${message}`
+                
+            }
+            if(message.includes('Invalid')){
+                toast.classList.add('invalid')
+                toast.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i>${message}`
+
+            }
+            if(message.includes('Success')){
+                
+                toast.innerHTML = `<i class="fa-solid fa-circle-check"></i>${message}`
+
+            }
+            toastbox.appendChild(toast)
+
+            setTimeout(() => {
+                toast.remove()
+            }, 6000)
+    
+        }
+    </script>
+</body>
+</html>
